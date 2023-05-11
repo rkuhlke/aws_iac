@@ -6,9 +6,7 @@ data "aws_iam_policy_document" "iam-policy" {
     sid = "ValheimServerSecretAccess"
 
     actions = [
-      "secretsmanager:GetSecretValue",
-      "secretsmanager:DescribeSecret",
-      "secretsmanager:ListSecrets"
+      "secretsmanager:GetSecretValue"
     ]
     resources = [
       data.aws_secretsmanager_secret.server.arn,
@@ -28,7 +26,7 @@ data "aws_iam_policy_document" "iam-policy" {
       "ecr:GetRepositoryPolicy"
     ]
     resources = [
-      aws_ecr_repository.ecr_repo.arn
+      data.aws_ecr_repository.ecr_repo.arn
     ]
   }
 

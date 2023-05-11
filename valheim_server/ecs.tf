@@ -28,7 +28,7 @@ resource "aws_ecs_capacity_provider" "capacity-provider" {
 
 resource "aws_ecs_task_definition" "task_definition" {
   depends_on = [
-    aws_ecr_repository.ecr_repo,
+    data.aws_ecr_repository.ecr_repo,
     aws_iam_role.ecs_task_execution_role
   ]
   family             = format("%s-%s-%s-task", var.project, var.environment, var.application)
@@ -42,9 +42,9 @@ resource "aws_ecs_task_definition" "task_definition" {
   container_definitions = jsonencode([
     {
       name         = "${var.application}"
-      image        = "${aws_ecr_repository.ecr_repo.repository_url}:latest"
-      cpu          = 1024
-      memory       = 3072
+      image        = "${data.aws_ecr_repository.ecr_repo.repository_url}:latest"
+      cpu          = 2048
+      memory       = 8192
       essential    = true
       network_mode = "host"
       mountPoints = [
@@ -85,13 +85,6 @@ resource "aws_ecs_task_definition" "task_definition" {
       }
     }
   ])
-}
-
-resource "aws_ecs_service" "ecs-service" {
-  name            = format("%s-%s-%s-ecs-service", var.project, var.environment, var.application)
-  cluster         = aws_ecs_cluster.ecs-cluster.id
-  task_definition = aws_ecs_task_definition.task_definition.arn
-  desired_count   = 1
 }
 
 resource "aws_cloudwatch_log_group" "ecs-log-group" {

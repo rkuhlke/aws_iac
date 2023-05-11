@@ -1,7 +1,7 @@
-variable "environment" {
-  type    = string
-  default = ""
-}
+#variable "environment" {
+#  type    = string
+#  default = ""
+#}
 
 ################################ VPC ################################
 variable "vpc_name" {
@@ -9,17 +9,17 @@ variable "vpc_name" {
   type    = string
 }
 
-variable "availability_zone" {
-  default = ""
-  type    = string
-}
+#variable "availability_zone" {
+#  default = ""
+#  type    = string
+#}
 
 ################################ VPC ################################
 
 
 ######################### Shift Code Scraper #########################
 
-variable "shift-code-application" {
+/* variable "shift-code-application" {
   type    = string
   default = ""
 }
@@ -42,7 +42,7 @@ variable "hash_key" {
 variable "hash_key_type" {
   type    = string
   default = ""
-}
+} */
 
 ######################### Shift Code Scraper #########################
 
@@ -116,28 +116,28 @@ variable "valheim_server_world" {
 ########################### Valheim Server ###########################
 
 ########################### Discord Runner ###########################
-variable "dr_instance_type" {
+# variable "dr_instance_type" {
 
-}
+# }
 
-variable "dr_project" {
-  type = string
-}
+# variable "dr_project" {
+#   type = string
+# }
 
-variable "dr_application" {
-  type = string
-}
+# variable "dr_application" {
+#   type = string
+# }
 
-variable "dr_min_size" {
-  type = number
-}
+# variable "dr_min_size" {
+#   type = number
+# }
 
-variable "dr_max_size" {
-  type = number
-}
+# variable "dr_max_size" {
+#   type = number
+# }
 
-variable "dr_key_name" {
+# variable "dr_key_name" {
 
-}
+# }
 
 ########################### Discord Runner ###########################
